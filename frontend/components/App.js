@@ -31,8 +31,30 @@ export default class App extends React.Component {
     }
   }
 
+  // Event handlers (Click & Submit)
+  handleHide = () => {
+    this.setState({
+      ...this.state,
+      todos: this.state.todos.filter(todo => {
+        return (todo.completed === false);
+      })
+    })
+    console.log('Clear clicked')
+  }
+
+  handleSubmit = e => {
+    e.preventDefault();
+
+    console.log('Submit clicked')
+  }
+
+  // Lifecycle methods
   componentDidMount(){
     console.log("Component Mounted")
+  }
+
+  componentDidUpdate(){
+    console.log('Component Updated')
   }
 
   render() {
@@ -43,7 +65,7 @@ export default class App extends React.Component {
         <TodoList list={todos}/>
 
         <Form />
-        <button>Clear</button>
+        <button onClick={this.handleHide}>Hide Completed</button>
       </div>
     )
   }
