@@ -20,7 +20,7 @@ export default class App extends React.Component {
         {
           task: 'Do Laundry',
           id: 29457,
-          completed: false
+          completed: true
         },
         {
           task: 'Walk The Dog',
@@ -39,16 +39,11 @@ export default class App extends React.Component {
     const { todos } = this.state;
     console.log(todos)
     return (
-      <div>
-        <TodoList list={this.state.todoList}/>
-        <ul>
-        {
-          todos.map(todo => {
-            return (<li key={todo.id}>{todo.task} {todo.completed ? '✔️' : ''}</li>)
-          })
-        }
-        </ul>
+      <div className='App'>
+        <TodoList list={todos}/>
+
         <Form />
+        <button>Clear</button>
       </div>
     )
   }
